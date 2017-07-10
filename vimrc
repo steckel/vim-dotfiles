@@ -15,7 +15,7 @@ set expandtab                                                " expand tabs to sp
 " set incsearch                                                " search as you type
 set laststatus=2                                             " always show statusline
 set list                                                     " show trailing whitespace
-set listchars=tab:▸\ ,trail:▫
+set listchars=tab:▸\ ,trail:▫,eol:¬
 " set ruler                                                    " show where you are
 " set scrolloff=3                                              " show context above/below cursorline
 " set showcmd
@@ -43,6 +43,9 @@ nnoremap <leader>t :CtrlPMixed<CR>
 " nnoremap <leader>] :TagbarToggle<CR>
 nnoremap <leader><space> :call whitespace#strip_trailing()<CR>
 noremap <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
+
+" go to end of previous word
+noremap <S-E> gE
 
 " autocmd BufRead,BufNewFile *.md set filetype=markdown  " md is markdown
 " autocmd BufRead,BufNewFile *.md set spell
