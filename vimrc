@@ -35,11 +35,11 @@ let mapleader = ','
 " noremap <C-j> <C-w>j
 " noremap <C-k> <C-w>k
 " noremap <C-l> <C-w>l
-" nnoremap <leader>b :CtrlPBuffer<CR>
 nnoremap <leader>d :NERDTreeToggle<CR>
 nnoremap <leader>f :NERDTreeFind<CR>
-nnoremap <leader>t :CtrlPMixed<CR>
-" nnoremap <leader>T :CtrlPClearCache<CR>:CtrlP<CR>
+nnoremap <leader>t :CtrlP<CR>
+nnoremap <leader>T :CtrlPClearCache<CR>:CtrlP<CR>
+nnoremap <leader>b :CtrlPBuffer<CR>
 " nnoremap <leader>] :TagbarToggle<CR>
 nnoremap <leader><space> :call whitespace#strip_trailing()<CR>
 noremap <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
@@ -73,6 +73,9 @@ nmap <leader>hl :let @/ = ""<CR> " escape/unhighlight search
 
 " gui settings
 colorscheme solarized
+
+" ctrlp.vim
+let g:ctrlp_custom_ignore = { 'dir': '\.git$\|node_modules' }
 
 " enable Omni completion
 filetype plugin on
