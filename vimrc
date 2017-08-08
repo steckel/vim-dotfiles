@@ -30,6 +30,9 @@ set softtabstop=2                                            " insert mode tab a
 set tabstop=8                                                " actual tabs occupy 8 characters
 
 " keyboard shortcuts
+" -----------------------------------------------------------------------------------------------------------------------
+" toggle :Ack with leader a
+nnoremap <leader>a :Ack<space>
 let mapleader = ','
 " noremap <C-h> <C-w>h
 " noremap <C-j> <C-w>j
@@ -40,7 +43,7 @@ nnoremap <leader>f :NERDTreeFind<CR>
 nnoremap <leader>t :CtrlP<CR>
 nnoremap <leader>T :CtrlPClearCache<CR>:CtrlP<CR>
 nnoremap <leader>b :CtrlPBuffer<CR>
-" nnoremap <leader>] :TagbarToggle<CR>
+nnoremap <leader>] :TagbarToggle<CR>
 nnoremap <leader><space> :call whitespace#strip_trailing()<CR>
 noremap <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
@@ -95,3 +98,8 @@ let g:tsuquyomi_completion_detail = 1
 let g:syntastic_typescript_checkers = ['tsuquyomi'] " You shouldn't use 'tsc' checker.
 let g:tsuquyomi_disable_quickfix = 1
 autocmd FileType typescript setlocal completeopt+=menu,preview
+
+" configure ack.vim with ag (the silver searcher)
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
