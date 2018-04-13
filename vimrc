@@ -7,6 +7,7 @@ syntax enable " enable syntax highlighting
 set autoread                                                 " reload files when changed on disk, i.e. via `git checkout`
 " set backspace=2                                              " Fix broken backspace in some setups
 " set backupcopy=yes                                           " see :help crontab
+set background=dark
 set clipboard=unnamed                                        " yank and paste with the system clipboard
 set directory-=.                                             " don't store swapfiles in the current directory
 " set encoding=utf-8
@@ -49,6 +50,7 @@ noremap <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo '
 
 " go to end of previous word
 noremap <S-E> gE
+noremap! jj <ESC>
 
 " autocmd BufRead,BufNewFile *.md set filetype=markdown  " md is markdown
 " autocmd BufRead,BufNewFile *.md set spell
