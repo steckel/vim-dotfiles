@@ -1,15 +1,16 @@
 .DEFAULT_GOAL := all
 ROOT_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 
-.PHONY: modules
-modules:
-	@echo "IMPLEMENT ME: You'll need to initialize some git submodules"
+.PHONY: git-submodules
+git-submodules:
+	@echo "initializing and updating git submodules..."
+	@git submodule update --init --recursive
 
-.PHONY: symlink
-symlink:
-	@echo "Symlinking configuration files"
+.PHONY: install
+install:
+	@echo "symlinking configuration files...."
 	@ln -snf $(ROOT_DIR)/vim $(HOME)/.vim
 	@ln -snf $(ROOT_DIR)/vimrc $(HOME)/.vimrc
 
 .PHONY: all
-all: modules symlink
+all: git-submodules install
