@@ -8,6 +8,8 @@ set autoread                                                 " reload files when
 " set backspace=2                                              " Fix broken backspace in some setups
 " set backupcopy=yes                                           " see :help crontab
 set background=dark                                          " set theme to darkbackground (specifically for solarized dark)
+set cursorcolumn                                             " highlight current column
+set cursorline                                               " highlight current line
 set clipboard=unnamed                                        " yank and paste with the system clipboard
 set directory-=.                                             " don't store swapfiles in the current directory
 " set encoding=utf-8
