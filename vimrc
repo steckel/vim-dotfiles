@@ -78,32 +78,98 @@ let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 set hlsearch                     " highlight search
 nmap <leader>hl :let @/ = ""<CR> " escape/unhighlight search
 
+" enable spellcheck
+set spell spelllang=en_us
 " gui settings
+" Force to use underline for spell check results
+augroup SpellUnderline
+  autocmd!
+  autocmd ColorScheme *
+    \ highlight SpellBad
+    \   cterm=Underline
+    \   ctermfg=NONE
+    \   ctermbg=NONE
+    \   term=Reverse
+    \   gui=Undercurl
+    \   guisp=Red
+  autocmd ColorScheme *
+    \ highlight SpellCap
+    \   cterm=Underline
+    \   ctermfg=NONE
+    \   ctermbg=NONE
+    \   term=Reverse
+    \   gui=Undercurl
+    \   guisp=Red
+  autocmd ColorScheme *
+    \ highlight SpellLocal
+    \   cterm=Underline
+    \   ctermfg=NONE
+    \   ctermbg=NONE
+    \   term=Reverse
+    \   gui=Undercurl
+    \   guisp=Red
+  autocmd ColorScheme *
+    \ highlight SpellRare
+    \   cterm=Underline
+    \   ctermfg=NONE
+    \   ctermbg=NONE
+    \   term=Reverse
+    \   gui=Undercurl
+    \   guisp=Red
+  augroup END
 colorscheme solarized
 
 " ctrlp.vim
 let g:ctrlp_custom_ignore = { 'dir': '\.git$\|node_modules' }
 
-" enable Omni completion
+" DOCUMENT ME
 filetype plugin on
-set omnifunc=syntaxcomplete#Complete
-
-" syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
 
 " tsuquyomi (typescript syntastic/omni completion integration)
-let g:tsuquyomi_completion_detail = 1
-let g:syntastic_typescript_checkers = ['tsuquyomi'] " You shouldn't use 'tsc' checker.
-let g:tsuquyomi_disable_quickfix = 1
-autocmd FileType typescript setlocal completeopt+=menu,preview
+" let g:tsuquyomi_completion_detail = 1
+" let g:syntastic_typescript_checkers = ['tsuquyomi'] " You shouldn't use 'tsc' checker.
+" let g:tsuquyomi_disable_quickfix = 1
+" autocmd FileType typescript setlocal completeopt+=menu,preview
 
 " configure ack.vim with ag (the silver searcher)
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
+
+" enable Omni completion
+"set omnifunc=syntaxcomplete#Complete
+"
+" 'longest' will change the 'completeopt' option so that Vim's popup menu
+" doesn't select the first completion item, but rather just inserts the
+" longest common text of all matches.
+" 'menuone' changes the menu so it'll come up even if there's only one match.
+set completeopt=longest,menuone
+" Change the behavior of the <Enter> key when the popup menu is visible. In
+" that case the Enter key will simply select the highlighted menu item, just
+" as <C-Y> does.
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Make <C-N> work the way it normally does; however, when the menu appears,
+" the <Down> key will be simulated. What this accomplishes is it keeps a menu
+" item always highlighted. This way you can keep typing characters to narrow
+" the matches, and the nearest match will be selected so that you can hit
+" Enter at any time to insert it.
+inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
+  \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+inoremap <expr> <C-j> pumvisible() ? "\<lt>Down>" : '<C-j>'
+inoremap <expr> <C-k> pumvisible() ? "\<lt>Up>" : '<C-k>'
+" TODO(steckel): Do I really need this one?
+" Simulates <C-X><C-O> to bring up the omni completion menu, then it simulates
+" <C-N><C-P> to remove the longest common text, and finally it simulates
+" <Down> again to keep a match highlighted.
+inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
+  \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+
+" Rust
+" ========================================================================
+let g:rustfmt_autosave = 1
+au FileType rust nmap gd <Plug>(rust-def)
+au FileType rust nmap <leader>gd <Plug>(rust-doc)
+" Rust Omnicomplete
+let g:racer_cmd = '~/.cargo/bin/racer'
+let g:racer_experimental_completer = 1
