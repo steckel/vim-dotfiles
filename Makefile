@@ -14,5 +14,5 @@ solarized: git-submodules
 .PHONY: install
 install: git-submodules solarized
 	@echo "symlinking configuration files...."
-	@ln -snf $(ROOT_DIR)/vim $(HOME)/.vim
+	@ln -snf $(ROOT_DIR)/plugins $(HOME)/.vim/pack/
 	@ln -snf $(ROOT_DIR)/vimrc $(HOME)/.vimrc
