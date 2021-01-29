@@ -34,20 +34,17 @@ set tabstop=8                                                " actual tabs occup
 
 " keyboard shortcuts
 " -----------------------------------------------------------------------------------------------------------------------
-" toggle :Ack with leader a
-nnoremap <leader>a :Ack<space>
 let mapleader = ','
-" noremap <C-h> <C-w>h
-" noremap <C-j> <C-w>j
-" noremap <C-k> <C-w>k
-" noremap <C-l> <C-w>l
+nnoremap <leader>a :Ack<space>                              " toggle :Ack with leader a
 nnoremap <leader>d :NERDTreeToggle<CR>
 nnoremap <leader>f :NERDTreeFind<CR>
 nnoremap <leader>t :CtrlP<CR>
 nnoremap <leader>T :CtrlPClearCache<CR>:CtrlP<CR>
 nnoremap <leader>b :CtrlPBuffer<CR>
 nnoremap <leader>] :TagbarToggle<CR>
-nnoremap <leader><space> :call whitespace#strip_trailing()<CR>
+nnoremap <C-w>c :tabnew<CR>                                 " tab navigation
+nnoremap <C-w>p :tabp<CR>
+nnoremap <C-w>n :tabn<CR>
 noremap <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
 " go to end of previous word
