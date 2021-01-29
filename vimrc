@@ -173,3 +173,9 @@ au FileType rust nmap <leader>gd <Plug>(rust-doc)
 " Rust Omnicomplete
 let g:racer_cmd = '~/.cargo/bin/racer'
 let g:racer_experimental_completer = 1
+
+" ALE: Asynchronous Lint Engine
+" ========================================================================
+let g:ale_linters = {
+\   'java': [''],
+\}
