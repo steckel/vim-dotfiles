@@ -163,5 +163,22 @@ let g:racer_experimental_completer = 1
 " ALE: Asynchronous Lint Engine
 " ========================================================================
 let g:ale_linters = {
-\   'java': [''],
+\   'java': ['checkstyle'],
 \}
+let g:ale_fixers = {
+\   'java': ['square_java_format'],
+\}
+let g:ale_fix_on_save = 1
+
+function! SquareJavaFormat(buffer) abort
+    return {
+    \   'command': 'square-java-format %t',
+    \   'read_temporary_file': 1,
+    \}
+endfunction
+
+function! s:PostPluginConfiguration()
+  execute ale#fix#registry#Add('square_java_format', 'SquareJavaFormat', ['java'], 'Fix Java files with square-java-format.')
+endfunction
+command! -nargs=0 PostPluginConfiguration call s:PostPluginConfiguration()
+autocmd VimEnter * PostPluginConfiguration
