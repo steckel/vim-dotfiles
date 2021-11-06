@@ -5,8 +5,6 @@ syntax enable " enable syntax highlighting
 
 " set autoindent
 set autoread                                                 " reload files when changed on disk, i.e. via `git checkout`
-" set backspace=2                                              " Fix broken backspace in some setups
-" set backupcopy=yes                                           " see :help crontab
 set background=dark                                          " set theme to darkbackground (specifically for solarized dark)
 set cursorcolumn                                             " highlight current column
 set cursorline                                               " highlight current line
@@ -122,20 +120,11 @@ let g:ctrlp_custom_ignore = { 'dir': '\.git$\|node_modules' }
 " DOCUMENT ME
 filetype plugin on
 
-" tsuquyomi (typescript syntastic/omni completion integration)
-" let g:tsuquyomi_completion_detail = 1
-" let g:syntastic_typescript_checkers = ['tsuquyomi'] " You shouldn't use 'tsc' checker.
-" let g:tsuquyomi_disable_quickfix = 1
-" autocmd FileType typescript setlocal completeopt+=menu,preview
-
 " configure ack.vim with ag (the silver searcher)
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
 
-" enable Omni completion
-"set omnifunc=syntaxcomplete#Complete
-"
 " 'longest' will change the 'completeopt' option so that Vim's popup menu
 " doesn't select the first completion item, but rather just inserts the
 " longest common text of all matches.
