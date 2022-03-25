@@ -49,3 +49,12 @@
 [submodule "plugins/start/vim-ember"]
 	path = plugins/start/vim-ember-hbs
 	url = https://github.com/joukevandermaas/vim-ember-hbs.git
+[submodule "plugins/start/vim-maktaba"]
+	path = plugins/start/vim-maktaba
+	url = https://github.com/google/vim-maktaba.git
+[submodule "plugins/start/vim-bazel"]
+	path = plugins/start/vim-bazel
+	url = https://github.com/bazelbuild/vim-bazel.git
+[submodule "plugins/start/vim-terraform"]
+	path = plugins/start/vim-terraform
+	url = https://github.com/hashivim/vim-terraform.git
